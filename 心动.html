@@ -1,0 +1,100 @@
+<!doctype html><!--声明文档类型 html-->
+<html>
+    <head>
+        <meta charset="UTF-8"><!--字符编码：utf-8国际编码-->
+        <meta name="Keywords" content="关键词1,关键词2"><!--关键字-->
+        <meta name="Description" content="描述"><!--描述-->
+        <title>心动 --css3</title>
+        <style type="text/css">
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            html,body{
+                width: 100%;
+                height: 100%;
+            }
+            body{
+                padding-top: 1px;
+                /*border: 1px solid black;*/
+                background: linear-gradient(180deg,pink,#ffd2d2 );
+                overflow: hidden;                
+                }
+            #heart{
+                width: 400px;
+                height:400px;
+                margin: 100px auto 0;
+                position: relative;               
+                /*border: 1px solid black;*/
+            }
+            #heart div{
+                width: 220px;
+                height: 220px;
+                position: absolute;
+                background: #d5093c;
+                box-shadow:0 0 40px #d5093c;
+                animation:beat 0.7s infinite;
+            }
+            #heart .circle{
+                border-radius:50%;
+                /*border-radius:110px;*/
+                background: linear-gradient(90deg,#f00943 0%,#d5093c 40%);
+            }
+            #heart .heart-left{
+                top:0;
+                left:0;                
+                z-index:3;               
+            }
+            #heart .heart-right{
+                top:0;
+                right: 0;            
+                z-index:2;
+            }
+            #heart .heart-bottom{
+                width: 215px;
+                height: 215px;
+                top:92px;
+                left:93px;
+                /*transform:rotate(45deg);*/
+                z-index:1;
+            }
+            @keyframes beat{
+                0%{
+                    transform:scale(1) rotate(45deg);
+                    box-shadow: 0 0 40px #d5093c;
+                }
+                50%{
+                    transform:scale(1.1) rotate(45deg);
+                    box-shadow: 0 0 70px #d5093c;
+                }
+                100%{
+                    transform:scale(1) rotate(45deg);
+                    box-shadow: 0 0 40px #d5093c;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="heart">
+            <div class="heart-left circle"></div>
+            <div class="heart-right circle"></div>
+            <div class="heart-bottom"></div>
+        </div>
+    </body>
+</html>
+
+
+<!--
+    注意：
+外边距合并问题：
+当垂直两个元素（eg.div body）挨着时，给它们添加外边距会出现外边距合并问题：两个元素都会加上最大的那个margin值。
+<body style="margin-top:10px;"><div style="margin-top:20px;"></div></body>  此时body和div都会加上margin-top:20px;
+解决办法：
+1、给外面的元素（body）添加边框border或者添加内边距padding，使两个元素分开；
+2、float position （脱离文档流：相互没有关系了）。
+
+
+当给html和body都设置height:100%后；再给body添加padding:1px;此时padding的值会加到body的真实高宽中，height:100%已经填满浏览器了，所以加上
+
+padding值会超过浏览器的高度，就会出现滚动条。解决方法：给body设置overflow:hidden;
+-->
